@@ -8,6 +8,7 @@ import './globals.css';
 import ToasterProvider from './providers/ToasterProvider';
 import LoginModal from './components/modals/LoginModal';
 import getCurrentUser from './actions/getCurrentUser';
+import { SafeUser } from './types';
 
 export const metadata = {
   title: 'AirBnb',
