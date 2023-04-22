@@ -12,8 +12,8 @@ import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
 
-import { toast } from 'react-hot-toast';
 import Button from '../Button';
+import { toast } from 'react-hot-toast';
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -36,11 +36,12 @@ const RegisterModal = () => {
 
     axios
       .post('/api/register', data)
-      .then(() => {
+      .then(data => {
+        console.log(data);
         registerModal.onClose();
       })
       .catch(err => {
-        toast.error('Something went wrong.');
+        toast.error(err.message);
       })
       .finally(() => {
         setIsLoading(false);
@@ -82,6 +83,7 @@ const RegisterModal = () => {
 
   const footerContent = (
     <div className='flex flex-col gap-4 mt-3'>
+      <hr />
       <Button outline label='Google' icon={FcGoogle} onClick={() => {}} />
       <Button
         outline
@@ -109,10 +111,10 @@ const RegisterModal = () => {
       disabled={isLoading}
       isOpen={registerModal.isOpen}
       title='Register'
-      body={bodyContent}
       actionLabel='Continue'
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
+      body={bodyContent}
       footer={footerContent}
     />
   );

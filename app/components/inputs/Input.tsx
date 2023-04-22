@@ -1,10 +1,9 @@
 'use client';
 
-import { error } from 'console';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import { BiDollar } from 'react-icons/bi';
 
-interface Props {
+interface InputProps {
   id: string;
   label: string;
   type?: string;
@@ -15,7 +14,7 @@ interface Props {
   errors: FieldErrors;
 }
 
-const Input = ({
+const Input: React.FC<InputProps> = ({
   id,
   label,
   type = 'text',
@@ -24,7 +23,7 @@ const Input = ({
   required,
   register,
   errors,
-}: Props) => {
+}) => {
   return (
     <div className='w-full relative'>
       {formatPrice && (
@@ -57,7 +56,7 @@ const Input = ({
         ${
           formatPrice ? 'left-9' : 'left-4'
         } peer-placeholder-shown:scale-100  peer-placeholder-shown:translate-y-0
-        peer-focus: scale-75  peer-focus:-translate-y-4
+        peer-focus:scale-75  peer-focus:-translate-y-4
         ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}`}
       >
         {label}
