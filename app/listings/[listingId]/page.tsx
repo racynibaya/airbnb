@@ -10,6 +10,7 @@ interface IParams {
 
 const ListingPage = async ({ params }: { params: IParams }) => {
   const listing = await getListingById(params);
+  console.log(listing);
   const currentUser = await getCurrentUser();
 
   if (!listing) {
